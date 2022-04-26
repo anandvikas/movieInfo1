@@ -1,0 +1,38 @@
+.vDiv{
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    max-height: 550px;
+    margin: 20px auto;
+    padding: 20px;
+
+}
+.vHead{
+    text-align: center;
+    margin-top: 100px;
+}
+.vPlay{
+    flex: 70%;
+    padding: 0px 20px;    
+}
+.vPlay>iframe{
+    height: 500px;
+    width: 100%;
+}
+.vList{
+    flex: 30%;
+    overflow: auto;
+    border: 1px solid rgb(150, 150, 150);
+}
+.vTitle{
+    padding: 10px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+.vTitle:hover{
+    background-color: rgba(255, 255, 255, 0.096);
+}
+.vDivErr{
+    text-align: center;
+    padding: 50px;
+}
