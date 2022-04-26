@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { GetImage } from './apifetcher';
-import { Ctx1 } from './contextProvider'
+import { GetImage } from '../common/apifetcher';
+import { Ctx1 } from '../common/contextProvider'
 
 const PersonProfile = () => {
     document.documentElement.scrollTop = 0;

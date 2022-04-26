@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-// import MovieDetails from './components/trending/moviedetail'
-import DetailsPage from './detailspage'
+import GenrsResult from '../genrsSearchResult/genrsResult'
+import Home from '../home/home'
+import DetailsPage from '../mediaDetail/detailspage'
+import PersonProfile from '../personDetail/personProfile'
+import Media from '../searchPage/media'
 import Footer from './footer'
-// import Header from './header'
-import Home from './home'
-import Media from './media'
 import Nav from './nav'
-import PersonProfile from './personProfile'
+
 
 const App = () => {
   return (
@@ -19,6 +19,7 @@ const App = () => {
         <Route path='/movieInfo1/person' element={<Media type={'person'} title={'Person'} />} />
         <Route path='/movieInfo1/media/:id' element={<DetailsPage />} />
         <Route path='/movieInfo1/person/:id' element={<PersonProfile />} />
+        <Route path='/movieInfo1/genrs/:genrMedia/:genrId' element={<GenrsResult/>}/>
       </Routes>
       <Footer />
     </>

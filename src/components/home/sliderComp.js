@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 // import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useNavigate } from 'react-router-dom';
-import { Ctx1 } from './contextProvider';
-import { GetImage } from './apifetcher';
+import { Ctx1 } from '../common/contextProvider';
+import { GetImage } from '../common/apifetcher';
 
 const SliderComp = (props) => {
     // console.log(props.data)
@@ -21,16 +21,16 @@ const SliderComp = (props) => {
     const setActive = (e) => {
         if (e.target.className === 'textSh3') {
             // console.log(e.target.id)            
-            if(props.sliderid === 'person'){
+            if(props.media === 'person'){
                 updateActivePerson(() => {
                     // console.log(data)
                     let activePerson = data.find((val) => {
                         return val.id == e.target.id
                     })
                     // console.log(activePerson)
-                    return activePerson
+                    return {...activePerson, media_type : props.media}
                 })
-                navigate(`./person/${e.target.id}`)                
+                navigate(`/movieInfo1/person/${e.target.id}`)                
             } else {
                 updateActiveMovie(() => {
                     // console.log(data)
@@ -38,15 +38,14 @@ const SliderComp = (props) => {
                         return val.id == e.target.id
                     })
                     // console.log(activeMovie)
-                    return activeMovie
+                    return {...activeMovie, media_type : props.media}
                 })
-                navigate(`./media/${e.target.id}`)                
+                navigate(`/movieInfo1/media/${e.target.id}`)                
             }            
         }
     }
     return (
-        <div className='mainS'>
-            <hr />
+        <div className='mainS'>            
             <h1>{props.heading}</h1>
             <div className='slideDivS' id={props.sliderid} onClick={setActive}>
                 {

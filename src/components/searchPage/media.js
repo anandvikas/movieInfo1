@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SearchByName } from './apifetcher'
-import { Ctx1 } from './contextProvider'
+import { SearchByName } from '../common/apifetcher'
+import { Ctx1 } from '../common/contextProvider'
 
 const Media = (props) => {
     const [data, updateData] = useState([])

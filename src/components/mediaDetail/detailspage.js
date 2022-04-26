@@ -1,22 +1,24 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { GetbyId, GetImage } from './apifetcher';
-import { Ctx1 } from './contextProvider'
-import RelatedVideos from './relatedVideos';
-import SimilarKeywordMedia from './similarKeyword';
+import { GetbyId, GetImage } from '../common/apifetcher';
+import { Ctx1 } from '../common/contextProvider'
+import KeywordsList from '../mediaDetail/keywordsList';
+import RelatedVideos from '../mediaDetail/relatedVideos';
+import GeneresMedia from './generesMedia';
+
 
 const DetailsPage = () => {
     document.documentElement.scrollTop = 0;
     const [data, updateData] = useState(null)
     const { activeMovie } = useContext(Ctx1)
     const parm = useParams()
-    let id = parm.id
-    console.log('chikara')
+    let id = parm.id    
 
-    GetbyId(activeMovie.media_type, id, updateData)
+    useEffect(()=>{
+        GetbyId(activeMovie.media_type, id, updateData)
+    }, [activeMovie])
 
-    if (data !== null) {
-        console.log('chikara')
+    if (data !== null) {        
         return (
             <>
                 <div className='detailDiv'>
@@ -40,7 +42,8 @@ const DetailsPage = () => {
                     </div>
                 </div>
                 <RelatedVideos />
-                <SimilarKeywordMedia/>
+                <KeywordsList/>
+                <GeneresMedia/>
             </>
         )
     }

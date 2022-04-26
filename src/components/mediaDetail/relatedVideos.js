@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './relatedVideos.css'
-import { GetVideos } from './apifetcher'
-import { Ctx1 } from './contextProvider'
+import { GetVideos } from '../common/apifetcher'
+import { Ctx1 } from '../common/contextProvider'
 
 const RelatedVideos = () => {
   const [data, updateData] = useState(null)
@@ -9,9 +9,11 @@ const RelatedVideos = () => {
 
   const { activeMovie } = useContext(Ctx1)
   useEffect(() => {
+    // console.log('active media from related videos')
+    // console.log(activeMovie)
     GetVideos(activeMovie.media_type, activeMovie.id, updateData)
-  }, [])
-  console.log(data)
+  }, [activeMovie])
+  // console.log(data)
 
   const changeVid = (e) => {
     if (e.target.className === 'vTitle') {

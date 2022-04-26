@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './slideShow.css'
-import { GetImage } from './apifetcher';
+import { GetImage } from '../common/apifetcher';
 
 const SlideShow = (props) => {
     const [data, updateData] = useState(props.data)
