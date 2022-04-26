@@ -34,7 +34,7 @@ const Media = (props) => {
                     // console.log(activePerson)
                     return activePerson
                 })
-                navigate(`/person/${e.target.id}`)
+                navigate(`/movieInfo1/person/${e.target.id}`)
             } else {
                 updateActiveMovie(() => {
                     // console.log(data)
@@ -44,7 +44,7 @@ const Media = (props) => {
                     // console.log(activeMovie)
                     return { ...activeMovie, media_type: props.type }
                 })
-                navigate(`/media/${e.target.id}`)
+                navigate(`/movieInfo1/media/${e.target.id}`)
             }
         }
     }
