@@ -40,7 +40,7 @@ const SliderComp = (props) => {
                     // console.log(activeMovie)
                     return {...activeMovie, media_type : props.media}
                 })
-                navigate(`/movieInfo1/media/${e.target.id}`)                
+                navigate(`/movieInfo1/${props.media}/${e.target.id}`)                
             }            
         }
     }

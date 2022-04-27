@@ -2,16 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 import './relatedVideos.css'
 import { GetVideos } from '../common/apifetcher'
 import { Ctx1 } from '../common/contextProvider'
+import { useParams } from 'react-router-dom'
 
 const RelatedVideos = () => {
   const [data, updateData] = useState(null)
   const [currentVid, updateCurrentVid] = useState(null)
+  const parms = useParams()
+  let {id, media} = parms
 
   const { activeMovie } = useContext(Ctx1)
   useEffect(() => {
     // console.log('active media from related videos')
     // console.log(activeMovie)
-    GetVideos(activeMovie.media_type, activeMovie.id, updateData)
+    GetVideos(media, id, updateData)
   }, [activeMovie])
   // console.log(data)
 

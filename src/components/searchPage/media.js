@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SearchByName } from '../common/apifetcher'
 import { Ctx1 } from '../common/contextProvider'
 
@@ -7,6 +7,8 @@ const Media = (props) => {
     const [data, updateData] = useState([])
     const [searchData, updateSearchData] = useState('')
     const { updateActiveMovie, updateActivePerson } = useContext(Ctx1)
+    const parms = useParams()
+    let {media} = parms
     const navigate = useNavigate()
 
     const performSearch = () => {
@@ -18,14 +20,14 @@ const Media = (props) => {
         // console.log(modifiedData)
 
         if (parsedArr.length !== 0) {
-            SearchByName(props.type, modifiedData, updateData)
+            SearchByName(media, modifiedData, updateData)
         }
 
     }
     const setActive = (e) => {
         if (e.target.className === 'textSh3') {
             // console.log(e.target.id)            
-            if (props.type === 'person') {
+            if (media === 'person') {
                 updateActivePerson(() => {
                     // console.log(data)
                     let activePerson = data.find((val) => {
@@ -34,7 +36,7 @@ const Media = (props) => {
                     // console.log(activePerson)
                     return activePerson
                 })
-                navigate(`/movieInfo1/person/${e.target.id}`)
+                navigate(`/movieInfo1/${media}/${e.target.id}`)
             } else {
                 updateActiveMovie(() => {
                     // console.log(data)
@@ -44,7 +46,7 @@ const Media = (props) => {
                     // console.log(activeMovie)
                     return { ...activeMovie, media_type: props.type }
                 })
-                navigate(`/movieInfo1/media/${e.target.id}`)
+                navigate(`/movieInfo1/${media}/${e.target.id}`)
             }
         }
     }
@@ -63,7 +65,7 @@ const Media = (props) => {
                             <div className='mediaCardsS' key={val.id}>
                                 <div className='mediaImgS'>
                                     {
-                                        props.type === 'person' ? <img src={`https://image.tmdb.org/t/p/w200${val.profile_path}`} alt={val.title} /> : <img src={`https://image.tmdb.org/t/p/w200${val.poster_path}`} alt={val.title} />
+                                        media === 'person' ? <img src={`https://image.tmdb.org/t/p/w200${val.profile_path}`} alt={val.title} /> : <img src={`https://image.tmdb.org/t/p/w200${val.poster_path}`} alt={val.title} />
                                     }
                                 </div>
                                 <div className='mediaTextS'>

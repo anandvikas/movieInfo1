@@ -24,7 +24,7 @@ export const GetbyId = (media = 'all', id, update) => {
   // const [data, updateData] = useState(null)  
   // useEffect(() => {
   fetch(link).then(res => res.json()).then((res) => {
-    // console.log(res)      
+    console.log(res)      
     update(res)
   }).catch((err) => {
     console.log("couldn't fetch the GetbyId")
