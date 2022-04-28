@@ -1,22 +1,38 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import SliderComp from '../home/sliderComp'
 import './generesMedia.css'
-import { GetMediaByGeneres } from '../common/apifetcher'
-import { Ctx1 } from '../common/contextProvider'
+import { GetGenrsbyId, GetMediaByGeneres } from '../common/apifetcher'
+
 import { useParams } from 'react-router-dom'
 
-const GeneresMedia = () => {
-  const {activeMovie} = useContext(Ctx1)
+const GeneresMedia = () => {  
   const parms = useParams()
-  let {id, media} = parms
-  const {media_type, genre_ids} = activeMovie
-  
-  return (
-    <div className='gmCon'>      
-      <SliderComp data={GetMediaByGeneres(media, genre_ids)} heading={'Media with similar generes'} sliderid={'similar_generes_movies'} media={media}/>
-      {/* <SliderComp data={GetMediaByGeneres('tv', genre_ids)} heading={'Series with similar generes'} sliderid={'similar_generes_tv'} media={'tv'}/> */}
-    </div>
-  )
+  const [data, updateData] = useState(null)
+  const [genrs, updateGenrs] = useState(null)
+  let { id, media } = parms
+  // console.log(id, media)
+
+  useEffect(() => {
+    GetGenrsbyId(media, id, updateGenrs)
+  }, [])
+
+  useEffect(() => {
+    console.log(genrs)
+    if (genrs !== null) {
+      GetMediaByGeneres(media, genrs, updateData)
+    }
+    console.log(data)
+  }, [genrs])
+
+  if (data !== null) {
+    return (
+      <div className='gmCon'>
+        <SliderComp data={data} heading={'Media with similar generes'} sliderid={'similar_generes_movies'} media={media} />
+        <h1>sucess</h1>
+      </div>
+    )
+  }
+  return (<div className='gmCon'>data not found</div>)
 }
 
 export default GeneresMedia

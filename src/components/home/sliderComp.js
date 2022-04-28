@@ -42,7 +42,7 @@ const SliderComp = (props) => {
                 })
                 navigate(`/movieInfo1/${props.media}/${e.target.id}`)                
             }            
-        }
+        } 
     }
     return (
         <div className='mainS'>            

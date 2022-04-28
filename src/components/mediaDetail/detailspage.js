@@ -7,6 +7,7 @@ import RelatedVideos from '../mediaDetail/relatedVideos';
 import GeneresMedia from './generesMedia';
 import './detailspage.css'
 import Basicetails from './basicDetail';
+import LoadingSpinner from '../loader/loadingSpinner';
 
 
 const DetailsPage = () => {
@@ -14,26 +15,26 @@ const DetailsPage = () => {
     const [data, updateData] = useState(null)
     const { activeMovie } = useContext(Ctx1)
     const parm = useParams()
-    let {id, media} = parm   
+    let { id, media } = parm
 
-    useEffect(()=>{
+    useEffect(() => {
         GetbyId(media, id, updateData)
     }, [activeMovie])
 
-    if (data !== null) {        
+    if (data !== null) {
         return (
-            <>                
-                <Basicetails data={data}/>
+            <>
+                <Basicetails data={data} />
                 <RelatedVideos />
-                <KeywordsList/>
-                {/* <GeneresMedia/> */}
+                <KeywordsList />
+                <GeneresMedia />
             </>
         )
     }
     return (
         <div className='detailDiv'>
             <div className='detailCardDiv'>
-                <h1>Loading ... </h1>
+                <LoadingSpinner />
             </div>
         </div>
     )
