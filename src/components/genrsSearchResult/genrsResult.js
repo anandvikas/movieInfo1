@@ -12,12 +12,13 @@ const GenrsResult = () => {
   useEffect(() => {
     GetMediaByGeneres(genrMedia, genrId, updateData)
   }, [])
-  if (data !== null) {
-    return (
-      <SliderComp data={data} heading={'Media with similar genrs'} sliderid={'genrs_movies'} media={genrMedia} />
-    )
-  }
-  return <h1 className='slideDivS'><LoadingSpinner/></h1>
+
+  return (
+    (data !== null) ?
+    <SliderComp data={data} heading={'Media with similar genrs'} sliderid={'genrs_movies'} media={genrMedia} />
+    :
+    <h1 className='slideDivS'><LoadingSpinner/></h1>
+  )  
 }
 
 export default GenrsResult

@@ -23,8 +23,8 @@
     padding: 0px 20px;
   }
   .detailTextDiv>h3, .detailTextDiv>h1, .detailTextDiv>p{
-    padding: 10px 0px;
-    /* line-height: 30px; */
+    padding: 5px 0px;
+    font-weight: lighter;
   }
   .detailTextDiv>div{
     /* padding: 10px 0px; */

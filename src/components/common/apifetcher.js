@@ -20,16 +20,12 @@ export const GetImage = (path) => {
 // this will fetch media according to type and media id 
 export const GetbyId = (media = 'all', id, update) => {
   const link = `https://api.themoviedb.org/3/${media}/${id}?api_key=${apiKey}`
-  // console.log(media, id)
-  // const [data, updateData] = useState(null)  
-  // useEffect(() => {
   fetch(link).then(res => res.json()).then((res) => {
     // console.log(res)      
     update(res)
   }).catch((err) => {
     console.log("couldn't fetch the GetbyId")
   })
-  // }, [])
   return
 }
 
@@ -37,7 +33,6 @@ export const GetbyId = (media = 'all', id, update) => {
 export const GetVideos = (media, id, update) => {
   const link = `https://api.themoviedb.org/3/${media}/${id}/videos?api_key=${apiKey}&language=en-US`
   fetch(link).then(res => res.json()).then(res => {
-    // console.log(res)
     update(res.results)
   }).catch(err => console.log('couldnt get related videos'))
 }
@@ -60,7 +55,6 @@ export const SearchByName = (media, name, update) => {
 export const GetKeywords = (media, id, updateKeywords) => {
   let link = `https://api.themoviedb.org/3/${media}/${id}/keywords?api_key=${apiKey}`
   fetch(link).then(res => res.json()).then((res) => {
-    // console.log(res.keywords === undefined ? res.results : res.keywords)
     updateKeywords(res.keywords === undefined ? res.results : res.keywords)
   })
 }
@@ -72,12 +66,10 @@ export const getMediaByKeyword = (media, keywords, update) => {
     for (let i = 0; keywords.length > 5 ? i < 5 : i < keywords.length; i++) {
       keywordStr += `,${keywords[i].id}`
     }
-    keywordStr = keywordStr.slice(1, keywordStr.length)
-    console.log(keywordStr)
+    keywordStr = keywordStr.slice(1, keywordStr.length)    
 
     const link = `https://api.themoviedb.org/3/discover/${media}?api_key=${apiKey}&with_keywords=${keywordStr}`
-    fetch(link).then(res => res.json()).then((res) => {
-      console.log(res.results)
+    fetch(link).then(res => res.json()).then((res) => {     
       update(res.results)
     })
   }
@@ -85,31 +77,25 @@ export const getMediaByKeyword = (media, keywords, update) => {
 
 // this will fetch media with similar generes 
 export const GetMediaByGeneres = (media, genereArr, update) => {
-  // const [data, updateData] = useState([])
   let genereStr = ''
   genereArr.forEach((val) => {
     genereStr += `,${val}`
   })
-  genereStr = genereStr.slice(1, genereStr.length)
-  console.log(genereStr)
+  genereStr = genereStr.slice(1, genereStr.length)  
 
   const link = `https://api.themoviedb.org/3/discover/${media}?api_key=${apiKey}&with_genres=${genereStr}`
 
-  // useEffect(() => {
-    fetch(link).then(res => res.json()).then((res) => {
-      // console.log(res)
-      update(res.results)
-    }).catch(err => console.log("couldn't fetch the GetTrending"))
-  // }, [])
-  // return data
+  fetch(link).then(res => res.json()).then((res) => {
+    update(res.results)
+  }).catch(err => console.log("couldn't fetch the GetTrending"))
+  return
 }
 
 
 // this will return the array of available generes 
 export const getAllGeneres = (media, update) => {
   let link = `https://api.themoviedb.org/3/genre/${media}/list?api_key=${apiKey}&language=en-US`
-  fetch(link).then(res => res.json()).then((res) => {
-    console.log(res)
+  fetch(link).then(res => res.json()).then((res) => {    
     update(res.genres)
   })
 }
@@ -117,22 +103,16 @@ export const getAllGeneres = (media, update) => {
 // this will genrs of media
 export const GetGenrsbyId = (media, id, update) => {
   const link = `https://api.themoviedb.org/3/${media}/${id}?api_key=${apiKey}`
-  // console.log(media, id)
-  // const [data, updateData] = useState(null)  
-  // useEffect(() => {
   fetch(link).then(res => res.json()).then((res) => {
-    // console.log(res.genres)
     update(() => {
       let gnrArr = res.genres.map((val => {
         return val.id
       }))
-      // console.log(gnrArr)
       return gnrArr
     })
   }).catch((err) => {
     console.log("couldn't fetch the Get gnr byId")
   })
-  // }, [])
   return
 }
 

@@ -4,13 +4,9 @@ export const Ctx1 = createContext()
 const ContextProvider = (props) => {
     const [activeMovie, updateActiveMovie] = useState('')
     const [activePerson, updateActivePerson] = useState('')
-    useEffect(()=>{
-      // console.log('this is active movie')
-      // console.log(activeMovie)
+    useEffect(()=>{      
     }, [activeMovie])
-    useEffect(()=>{
-      // console.log('this is active person')
-      // console.log(activePerson)
+    useEffect(()=>{      
     }, [activePerson])
   return (
     <Ctx1.Provider value={{activeMovie, activePerson, updateActiveMovie, updateActivePerson}}>{props.children}</Ctx1.Provider>

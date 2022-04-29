@@ -1,32 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react'
-import './relatedVideos.css'
+import React, { useEffect, useState } from 'react'
 import { GetVideos } from '../common/apifetcher'
-import { Ctx1 } from '../common/contextProvider'
 import { useParams } from 'react-router-dom'
+import './relatedVideos.css'
 
 const RelatedVideos = () => {
   const [data, updateData] = useState(null)
   const [currentVid, updateCurrentVid] = useState(null)
   const parms = useParams()
   let {id, media} = parms
-
-  const { activeMovie } = useContext(Ctx1)
-  useEffect(() => {
-    // console.log('active media from related videos')
-    // console.log(activeMovie)
+  
+  useEffect(() => {    
     GetVideos(media, id, updateData)
-  }, [activeMovie])
-  // console.log(data)
+  }, [media, id])  
 
+  // this will change the video in iframe 
   const changeVid = (e) => {
     if (e.target.className === 'vTitle') {
       updateCurrentVid(e.target.id)
     }
   }
 
-  if (data !== null && data.length > 0) {
-    return (
-      <>
+  return (
+    (data !== null && data.length > 0) ?
+    <>
         <h1 className='vHead'>Related Videos</h1>
         <div className='vDiv'>
           <div className='vPlay'>
@@ -43,16 +39,14 @@ const RelatedVideos = () => {
           </div>
         </div>
       </>
-    )
-  }
-  return (
-    <>
+      :
+      <>
       <h1 className='vHead'>Related Videos</h1>
       <div className='vDivErr'>
         No video available
       </div>
     </>
-  )
+  )  
 }
 
 export default RelatedVideos

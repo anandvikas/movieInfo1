@@ -1,12 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { SearchByName } from '../common/apifetcher'
-import { Ctx1 } from '../common/contextProvider'
 
 const Media = (props) => {
     const [data, updateData] = useState([])
-    const [searchData, updateSearchData] = useState('')
-    const { updateActiveMovie, updateActivePerson } = useContext(Ctx1)
+    const [searchData, updateSearchData] = useState('')    
     const parms = useParams()
     let {media} = parms
     const navigate = useNavigate()
@@ -22,34 +20,8 @@ const Media = (props) => {
         if (parsedArr.length !== 0) {
             SearchByName(media, modifiedData, updateData)
         }
-
     }
-    const setActive = (e) => {
-        if (e.target.className === 'textSh3') {
-            // console.log(e.target.id)            
-            if (media === 'person') {
-                updateActivePerson(() => {
-                    // console.log(data)
-                    let activePerson = data.find((val) => {
-                        return val.id == e.target.id
-                    })
-                    // console.log(activePerson)
-                    return activePerson
-                })
-                navigate(`/movieInfo1/${media}/${e.target.id}`)
-            } else {
-                updateActiveMovie(() => {
-                    // console.log(data)
-                    let activeMovie = data.find((val) => {
-                        return val.id == e.target.id
-                    })
-                    // console.log(activeMovie)
-                    return { ...activeMovie, media_type: props.type }
-                })
-                navigate(`/movieInfo1/${media}/${e.target.id}`)
-            }
-        }
-    }
+    
     return (
         <div className='searchDiv'>
             <hr />
@@ -58,7 +30,7 @@ const Media = (props) => {
                 <input name='search' type='text' placeholder='Search field' onChange={(e) => { updateSearchData(e.target.value) }} />
                 <button onClick={performSearch}>Search</button>
             </div>
-            <div className='mediaResult' onClick={setActive}>
+            <div className='mediaResult'>
                 {
                     data.map((val) => {
                         return (
@@ -69,7 +41,7 @@ const Media = (props) => {
                                     }
                                 </div>
                                 <div className='mediaTextS'>
-                                    <h3 id={val.id} className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3>
+                                    <Link to={`/movieInfo1/${media}/${val.id}`}><h3 className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3></Link>                                    
                                 </div>
                             </div>
                         )

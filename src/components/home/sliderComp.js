@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
-// import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { useNavigate } from 'react-router-dom';
-import { Ctx1 } from '../common/contextProvider';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { GetImage } from '../common/apifetcher';
 
-const SliderComp = (props) => {
-    // console.log(props.data)
-    const navigate = useNavigate()
-    const { updateActiveMovie, updateActivePerson } = useContext(Ctx1)
+const SliderComp = (props) => {    
     const [data, updateData] = useState(props.data)
 
     useEffect(() => {
@@ -17,37 +12,11 @@ const SliderComp = (props) => {
     const scrollDiv = () => {
         document.getElementById(`${props.sliderid}`).scrollLeft += 380;
     }
-
-    const setActive = (e) => {
-        if (e.target.className === 'textSh3') {
-            // console.log(e.target.id)            
-            if(props.media === 'person'){
-                updateActivePerson(() => {
-                    // console.log(data)
-                    let activePerson = data.find((val) => {
-                        return val.id == e.target.id
-                    })
-                    // console.log(activePerson)
-                    return {...activePerson, media_type : props.media}
-                })
-                navigate(`/movieInfo1/person/${e.target.id}`)                
-            } else {
-                updateActiveMovie(() => {
-                    // console.log(data)
-                    let activeMovie = data.find((val) => {
-                        return val.id == e.target.id
-                    })
-                    // console.log(activeMovie)
-                    return {...activeMovie, media_type : props.media}
-                })
-                navigate(`/movieInfo1/${props.media}/${e.target.id}`)                
-            }            
-        } 
-    }
+    
     return (
         <div className='mainS'>            
             <h1>{props.heading}</h1>
-            <div className='slideDivS' id={props.sliderid} onClick={setActive}>
+            <div className='slideDivS' id={props.sliderid} >
                 {
                     data.map((val) => {
                         return (
@@ -58,15 +27,14 @@ const SliderComp = (props) => {
                                     }                                    
                                 </div>
                                 <div className='textS'>
-                                    <h3 id={val.id} className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3>
+                                    <Link to={`/movieInfo1/${props.media}/${val.id}`}><h3 className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3></Link>                                    
                                 </div>
                             </div>
                         )
                     })
                 }
             </div>
-            <div className='sliderBtn' onClick={scrollDiv}>more</div>
-            {/* <NavigateNextIcon id='NavigateNextIcon' /> */}
+            <div className='sliderBtn' onClick={scrollDiv}>more</div>            
         </div>
     )
 }

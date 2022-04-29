@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Ctx1 } from '../common/contextProvider'
+import React, { useEffect, useState } from 'react'
 import { GetKeywords } from '../common/apifetcher'
-import './keywordList.css'
 import { useParams } from 'react-router-dom'
+import './keywordList.css'
 
-const KeywordsList = () => {
-    const {activeMovie} = useContext(Ctx1)
+
+const KeywordsList = () => {    
     const [keywords, updateKeywords] = useState([])
     const parms = useParams()
     let {id, media} = parms
 
     useEffect(() => {
         GetKeywords(media, id, updateKeywords)
-      }, [activeMovie])
+      }, [])
+
     return (
         <div className='kewwordsCon'>
             <h1>Keywords</h1>
