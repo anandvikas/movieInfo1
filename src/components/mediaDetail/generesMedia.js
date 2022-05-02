@@ -29,7 +29,7 @@ const GeneresMedia = () => {
     (data !== null) ?
       <div className='gmCon'>
         <SliderComp data={data} heading={'Media with similar generes'} sliderid={'similar_generes_movies'} media={media} />
-        <h1>sucess</h1>
+        
       </div>
       :
       <div className='gmCon'><LoadingSpinner /></div>

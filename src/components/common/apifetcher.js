@@ -96,6 +96,7 @@ export const GetMediaByGeneres = (media, genereArr, update) => {
 export const getAllGeneres = (media, update) => {
   let link = `https://api.themoviedb.org/3/genre/${media}/list?api_key=${apiKey}&language=en-US`
   fetch(link).then(res => res.json()).then((res) => {    
+    console.log(res.genres)
     update(res.genres)
   })
 }
@@ -114,5 +115,16 @@ export const GetGenrsbyId = (media, id, update) => {
     console.log("couldn't fetch the Get gnr byId")
   })
   return
+}
+
+// this will fetch the discover api 
+export const fetchDiscover = (queries, update) => {
+//  console.log(queries)
+let link = `https://api.themoviedb.org/3/discover/${queries.media}?api_key=${apiKey}&sort_by=${queries.sort_by}&${queries.yearQuery}=${queries.yearQueryNum}&with_genres=${queries.with_genres}`
+console.log(link)
+fetch(link).then((res)=>{return res.json()}).then((res)=>{
+  console.log(res)
+  update(res.results)
+})
 }
 

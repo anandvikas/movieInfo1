@@ -21,13 +21,13 @@ const SliderComp = (props) => {
                     data.map((val) => {
                         return (
                             <div className='cardsS' key={val.id}>
-                                <div className='imgS'>
+                                <div className='imgS'><Link to={`/${props.media}/${val.id}`}>
                                     {
                                         props.sliderid === 'person' ? <img src={GetImage(val.profile_path)} alt={val.title} className='roundImg'/> : <img src={GetImage(val.poster_path)} alt={val.title} />
-                                    }                                    
+                                    }</Link>                                    
                                 </div>
                                 <div className='textS'>
-                                    <Link to={`/movieInfo1/${props.media}/${val.id}`}><h3 className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3></Link>                                    
+                                    <Link to={`/${props.media}/${val.id}`}><h3 className='textSh3'>{(val.name === undefined) ? val.title : val.name}</h3></Link>                                    
                                 </div>
                             </div>
                         )

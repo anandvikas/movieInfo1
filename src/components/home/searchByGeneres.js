@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { getAllGeneres } from '../common/apifetcher'
 import './searchByGeneres.css'
 
@@ -27,11 +27,11 @@ const SearchByGeneres = () => {
           <option value='tv'>Series</option>
         </select>
       </div>
-      <div className='generesDiv' onClick={selectGenrs}>
+      <div className='generesDiv' >
         {
           data.map((val) => {
             return (
-              <span key={val.id} className='genrsWord' id={val.id}>{val.name}</span>
+              <span  key={val.id}  className='genrsWord' ><Link to={`/genrs/${mediaType}/${val.id}`} className='genrsLink'>{val.name}</Link></span>
             )
           })
         }
