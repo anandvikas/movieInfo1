@@ -1,0 +1,14 @@
+.pageTitle{
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+}
+.dNavDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.293);
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+}

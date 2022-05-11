@@ -1,0 +1,140 @@
+.deCard {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.237);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.side1 {
+    flex: 40%;
+}
+
+.side1>img {
+    border-radius: 20px;
+}
+
+.side2 {
+    flex: 60%;
+}
+
+.side2>h1 {
+    padding: 5px 20px;
+}
+
+.side2>p {
+    padding: 5px 20px;
+    font-size: 20px;
+}
+
+table {
+    margin: 30px auto;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.225);
+}
+
+table>tbody>tr>td {
+    padding: 10px;
+    font-weight: lighter;
+    border-bottom: 1px solid black;
+}
+
+table>tbody>tr>td>span {
+    font-weight: lighter;
+}
+
+table>tbody>tr:hover {
+    background-color: rgba(255, 255, 255, 0.393);
+}
+
+.otrDetails {
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.393);
+}
+
+.expander {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.57);
+}
+.expanded {
+    padding: 20px;    
+    display: block;
+}
+.contracted {
+    padding: 20px;    
+    display: none;
+}
+.imgContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.keyWordsDiv{      
+    width: 100%;
+    /* max-width: 1000px; */
+    margin: 0px auto;
+    padding: 20px;
+    line-height: 20px;
+    display: flex;
+    flex-wrap: wrap;    
+}
+.keyWordsDiv>span{
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.362);
+    color: black;
+    margin: 10px;
+    border-radius: 10px;
+}
+.genrsLink {   
+    text-decoration: none;
+}
+
+.genrsWord {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.362);
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.vDiv{
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    max-height: 550px;
+    margin: 20px auto;
+    padding: 20px;
+
+}
+.vHead{
+    text-align: center;
+    margin-top: 100px;
+}
+.vPlay{
+    flex: 70%;
+    padding: 0px 20px;    
+}
+.vPlay>iframe{
+    height: 500px;
+    width: 100%;
+}
+.vList{
+    flex: 30%;
+    overflow: auto;
+    border: 1px solid rgb(150, 150, 150);
+}
+.vTitle{
+    padding: 10px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+.vTitle:hover{
+    background-color: rgba(255, 255, 255, 0.096);
+}
+.vDivErr{
+    text-align: center;
+    padding: 50px;
+}

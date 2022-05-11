@@ -1,0 +1,26 @@
+.fs>select, .fs>select>option{
+    color: black;    
+}
+.filterOptions{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;    
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.268);
+    width: 90%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.fs>select{
+    margin-left: 10px;
+}
+.appBtn{
+    text-align: center;
+    margin: 50px 20px;
+}
+.appBtn>button{
+    padding: 10px 20px;
+    color: black;
+}

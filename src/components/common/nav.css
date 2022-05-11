@@ -1,0 +1,16 @@
+.navDiv{    
+    display: flex;
+    align-items: center;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.navLink{
+    padding: 20px 20px;
+    text-decoration: none;
+    color: white;
+}
+.active{
+    background-color: rgb(71, 71, 71);
+}

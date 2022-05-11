@@ -1,0 +1,32 @@
+.dpDiv{
+    margin-top: 50px;
+    text-align: center;
+}
+.dpDiv>img{
+    border-radius: 50px;
+}
+.dpName{
+    text-align: center;
+}
+.aka{
+    margin-top: 50px;
+}
+.aka>h3{
+    text-align: center;    
+}
+.aka>div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;    
+}
+.aka>div>span{
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.581);
+    border-radius: 10px;
+    margin: 10px;
+}
+.biography{
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
